@@ -1,0 +1,17 @@
+services:
+  grove:
+    build: .
+    ports:
+      - "4000:4000"
+    environment:
+      NODE_ENV: production
+      PORT: 4000
+      JWT_SECRET: ${JWT_SECRET:-change-this-before-real-use}
+      MONGODB_URI: ${MONGODB_URI:-}
+      MONGODB_DB: ${MONGODB_DB:-grove}
+      CLIENT_ORIGIN: ${CLIENT_ORIGIN:-http://localhost:4000}
+    volumes:
+      - grove-data:/app/server/data
+
+volumes:
+  grove-data:
